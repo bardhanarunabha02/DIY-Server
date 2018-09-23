@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-//const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient
 
 const app = express();
 app.use(morgan('combined'));
@@ -11,6 +11,7 @@ app.use(cors());
 
 var db;
 
+/*
 
 app.get('/', (req, res)=>{
   console.log('Current Directory - ' + __dirname);
@@ -18,6 +19,7 @@ app.get('/', (req, res)=>{
       'EXPRESS IS UP AND RUNNING!!'
     )
 })
+
 
 //call MONGODB from here - heroku 
 app.get('/posts', (req, res)=>{
@@ -35,8 +37,9 @@ app.get('/catalog', (req, res)=>{
 
 app.listen(process.env.PORT || 8081);
 
+*/
 
-/*
+
 MongoClient.connect('mongodb://testuser:testuser_2018@ds157742.mlab.com:57742/test-mevn', (err, client) => {
     debugger;
     if(err)
@@ -58,5 +61,5 @@ app.get('/', (req, res) => {
   })
 })
 
-*/
+
 
