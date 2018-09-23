@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-const MongoClient = require('mongodb').MongoClient
+//const MongoClient = require('mongodb').MongoClient
 
 const app = express();
 app.use(morgan('combined'));
