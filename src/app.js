@@ -46,7 +46,7 @@ MongoClient.connect('mongodb://testuser:testuser_2018@ds157742.mlab.com:57742/te
       console.log(err);
 
       db = client.db('test-mevn') // whatever your database name is
-      app.listen(3000, () => {
+      app.listen(process.env.PORT||3000, () => {
         console.log('listening on 3000')
       })
 })
