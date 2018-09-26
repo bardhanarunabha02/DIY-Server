@@ -39,6 +39,7 @@ app.listen(process.env.PORT || 8081);
 
 */
 
+/*
 
 MongoClient.connect('mongodb://testuser:testuser_2018@ds157742.mlab.com:57742/test-mevn', (err, client) => {
     debugger;
@@ -50,8 +51,6 @@ MongoClient.connect('mongodb://testuser:testuser_2018@ds157742.mlab.com:57742/te
         console.log('listening on 3000')
       })
 })
-
-
 app.get('/', (req, res) => {
   debugger;
   db.collection('diyDetails').find().toArray(function(err, results) {
@@ -61,5 +60,30 @@ app.get('/', (req, res) => {
   })
 })
 
+*/
+MongoClient.connect('mongodb+srv://retail_admin:retail_admin@retail01-uhhma.mongodb.net/test?retryWrites=true', (err, client) => {
+    //debugger;
+    if(err)
+      console.log(err);
+
+      db = client.db('retail') // whatever your database name is
+      app.listen(process.env.PORT||3000, () => {
+        console.log('listening on 3000')
+      })
+})
+
+app.post('/', (req, res) => {
+  //debugger;
+  let EANNo = req.body.prodcode;
+  console.log("EAN No ",EANNo )
+  var query = { EAN: EANNo };
+  db.collection('Product').find(query, { projection: { _id: 0} }).toArray(function(err, results) {
+    //console.log(results)
+    res.send(results);
+    // send HTML file populated with quotes here
+  })
+})
+
+//010001
 
 
