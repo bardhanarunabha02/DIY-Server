@@ -51,15 +51,33 @@ MongoClient.connect('mongodb://testuser:testuser_2018@ds157742.mlab.com:57742/te
       })
 })
 
-
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
   debugger;
-  db.collection('diyDetails').find().toArray(function(err, results) {
+  console.log('Request Body ' + req.body.prodcode)
+  // var strQuery={ProductID: "EN58745896321"}
+  var strQuery={ProductID: req.body.prodcode}
+  db.collection('diyDetails').find(strQuery).toArray(function(err, results) {
     //console.log(results)
     res.send(results);
     // send HTML file populated with quotes here
   })
 })
+
+// app.get('/', (req, res) => {
+//   debugger;
+//   var strQuery={ProductID: "EN58745896321"}
+//   db.collection('diyDetails').find(strQuery).toArray(function(err, results) {
+//     //console.log(results)
+//     res.send(results);
+//     // send HTML file populated with quotes here
+//   })
+// })
+
+// app.post('/getProd', (req, res) => {
+//   debugger;
+//   console.log(req.body) //undefined
+//   res.end("Success")  
+// })
 
 
 
